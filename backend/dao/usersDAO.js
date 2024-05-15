@@ -1,5 +1,6 @@
-const User = require("../models/User");
+
 const bcrypt = require("bcrypt");
+const db = require('../db');
 
 const registerUser = async (req, res) => {
   const { name, surname, email, password } = req.body;
@@ -33,7 +34,8 @@ const registerUser = async (req, res) => {
 };
 
 const loginUser = async (req, res) => {
-  const { email, password } = req.body;
+  console.log(req);
+  const { email, password } = req;
   try {
     const [users] = await db.query("SELECT * FROM users WHERE email = ?", [
       email,

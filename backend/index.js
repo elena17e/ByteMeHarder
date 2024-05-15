@@ -36,7 +36,7 @@ app.post('/login', async (req, res) => {
 app.post('/forgot-password', async (req, res) => {
     const result = usersDAO.forgotPassword(req.body);
     //const token = jwt.sign({ /* user data */ }, JWT_SECRET_KEY);
-    res.json({ token });
+    res.json({ result });
 });
 
 app.listen(PORT, () => {
