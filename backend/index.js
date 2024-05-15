@@ -13,9 +13,9 @@ app.use(cors());
 app.get('/events', eventsDAO.getAllEvents);
 app.post('/events', eventsDAO.createEvent);
 app.put('/events/:id', eventsDAO.updateEvent);
-app.get('/events/:id/comments', eventsDAO.getEventComments);
-app.post('/events/:id/comments', eventsDAO.addEventComment);
-app.put('/events/:id/comments/:commentId', eventsDAO.updateEventComment);
+//app.get('/events/:id/comments', eventsDAO.getEventComments);
+//app.post('/events/:id/comments', eventsDAO.addEventComment);
+//app.put('/events/:id/comments/:commentId', eventsDAO.updateEventComment);
 
 app.post('/register', usersDAO.registerUser);
 app.post('/login', usersDAO.loginUser);
