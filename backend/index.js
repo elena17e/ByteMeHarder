@@ -23,19 +23,19 @@ app.get('/events/:url', verifyToken, eventsDAO.searchMaliciousURL);
 
 app.post('/register', async (req, res) => {
     const result = usersDAO.registerUser(req.body);
-    const token = jwt.sign({ korisnik }, JWT_SECRET_KEY);
+    const token = jwt.sign({ name: result.user.name, surname: result.user.surname, email: result.user.email }, JWT_SECRET_KEY);
     res.json({ token });
 });
 
 app.post('/login', async (req, res) => {
     const result = usersDAO.loginUser(req.body);
-    const token = jwt.sign({ /* user data */ }, JWT_SECRET_KEY);
+    const token = jwt.sign({ name: result.user.name, surname: result.user.surname, email: result.user.email }, JWT_SECRET_KEY);
     res.json({ token });
 });
 
 app.post('/forgot-password', async (req, res) => {
     const result = usersDAO.forgotPassword(req.body);
-    const token = jwt.sign({ /* user data */ }, JWT_SECRET_KEY);
+    //const token = jwt.sign({ /* user data */ }, JWT_SECRET_KEY);
     res.json({ token });
 });
 
