@@ -1,29 +1,33 @@
 
 const bcrypt = require("bcrypt");
 const db = require('../db');
-const xss = require('xss-clean'); 
+
 
 const registerUser = async (req, res) => {
-  const { name, surname, email, password } = req;
+  const { name, surname, email, password } = req.body;
   try {
-    
-    const safeName = xss(name);
-    const safeSurname = xss(surname);
-    const safeEmail = xss(email);
-
-    
-    const [existingUser] = await db.query("SELECT * FROM users WHERE email = ?", [safeEmail]);
+    const [existingUser] = await db.query(
+      "SELECT * FROM users WHERE email = ?",
+      [email]
+    );
     if (existingUser.length > 0) {
       return res.status(400).json({ message: "Email already exists" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await db.query("INSERT INTO users (name, surname, email, password) VALUES (?, ?, ?, ?)", [safeName, safeSurname, safeEmail, hashedPassword]);
+    await db.query(
+      "INSERT INTO users (name, surname, email, password) VALUES (?, ?, ?, ?)",
+      [name, surname, email, hashedPassword]
+    );
 
-    const [newUser] = await db.query("SELECT * FROM users WHERE email = ?", [safeEmail]);
+    const [newUser] = await db.query("SELECT * FROM users WHERE email = ?", [
+      email,
+    ]);
 
-    res.status(201).json({ message: "User registered successfully", user: newUser[0] });
+    res
+      .status(201)
+      .json({ message: "User registered successfully", user: newUser[0] });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
@@ -31,19 +35,20 @@ const registerUser = async (req, res) => {
 };
 
 const loginUser = async (req, res) => {
-  const { email, password } = req.body;
+  console.log(req);
+  const { email, password } = req;
   try {
-    
-    const safeEmail = xss(email);
-
-    
-    const [users] = await db.query("SELECT * FROM users WHERE email = ?", [safeEmail]);
+    const [users] = await db.query("SELECT * FROM users WHERE email = ?", [
+      email,
+    ]);
     const user = users[0];
     if (!user) {
-      return res.status(404).json({ message: "User not found or invalid credentials" });
+      return res
+        .status(404)
+        .json({ message: "User not found or invalid credentials" });
     }
 
-   
+    
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
       return res.status(401).json({ message: "Invalid credentials" });
@@ -59,17 +64,15 @@ const loginUser = async (req, res) => {
 const forgotPassword = async (req, res) => {
   const { email } = req.body;
   try {
-    
-    const safeEmail = xss(email);
-
-    
-    const [users] = await db.query("SELECT * FROM users WHERE email = ?", [safeEmail]);
+    const [users] = await db.query("SELECT * FROM users WHERE email = ?", [
+      email,
+    ]);
     const user = users[0];
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
-
+    // ADD SEND VERIFICATION EMAIL AND RESET PASSWORD FUNCTIONALITY HERE
 
     res.json({ message: "Password reset successful" });
   } catch (error) {
