@@ -1,7 +1,5 @@
-
 const bcrypt = require("bcrypt");
 const db = require('../db');
-
 
 const registerUser = async (req, res) => {
   const { name, surname, email, password } = req.body;
@@ -22,12 +20,12 @@ const registerUser = async (req, res) => {
     );
 
     const [newUser] = await db.query("SELECT * FROM users WHERE email = ?", [
-      email,
+     email,
     ]);
 
     res
-      .status(201)
-      .json({ message: "User registered successfully", user: newUser[0] });
+       .status(201)
+       .json({ message: "User registered successfully", user: newUser[0] });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
@@ -39,17 +37,15 @@ const loginUser = async (req, res) => {
   const { email, password } = req;
   try {
     const [users] = await db.query("SELECT * FROM users WHERE email = ?", [
-      email,
+       email,
     ]);
     const user = users[0];
     if (!user) {
       return res
-        .status(404)
-        .json({ message: "User not found or invalid credentials" });
+      .status(404)
+      .json({ message: "User not found or invalid credentials" });
     }
-
-    
-    const passwordMatch = await bcrypt.compare(password, user.password);
+  const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
@@ -65,14 +61,12 @@ const forgotPassword = async (req, res) => {
   const { email } = req.body;
   try {
     const [users] = await db.query("SELECT * FROM users WHERE email = ?", [
-      email,
+       email,
     ]);
     const user = users[0];
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-
-    // ADD SEND VERIFICATION EMAIL AND RESET PASSWORD FUNCTIONALITY HERE
 
     res.json({ message: "Password reset successful" });
   } catch (error) {
@@ -80,10 +74,8 @@ const forgotPassword = async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 };
-
 module.exports = {
   registerUser,
   loginUser,
   forgotPassword,
 };
-
