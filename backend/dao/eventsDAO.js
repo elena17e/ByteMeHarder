@@ -1,5 +1,3 @@
-
-const Event = require('../models/Event');
 const db = require('../db');
 
 

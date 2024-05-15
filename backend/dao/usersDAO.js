@@ -26,7 +26,6 @@ const registerUser = async (req, res) => {
 };
 
 const loginUser = async (req, res) => {
-  console.log(req);
   const { email, password } = req;
   try {
     const [users] = await db.query("SELECT * FROM user WHERE email = ?", [
