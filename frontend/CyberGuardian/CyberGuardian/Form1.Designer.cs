@@ -34,7 +34,7 @@ namespace CyberGuardian
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(379, 104);
+            this.button1.Location = new System.Drawing.Point(280, 125);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(258, 55);
             this.button1.TabIndex = 0;
