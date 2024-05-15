@@ -1,37 +1,35 @@
-const mongoose = require('mongoose');
 const User = require('../models/User');
 
-/*mongoose.connect('mongodb://localhost:27017/hardkodirano', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false
-});*/
 
 const registerUser = async (req, res) => {
-    /*const { name, surname, email, password } = req.body;
+    const { name, surname, email, password } = req.body;
     try {
-        const existingUser = await User.findOne({ email });
-        if (existingUser) {
+        const [existingUser] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
+        if (existingUser.length > 0) {
             return res.status(400).json({ message: 'Email already exists' });
         }
-        // Create new user
-        const newUser = new User({ name, surname, email, password });
-        await newUser.save();
-        res.status(201).json({ message: 'User registered successfully' });
-    } catch (error) {
+
+        await db.query('INSERT INTO users (name, surname, email, password) VALUES (?, ?, ?, ?)', [name, surname, email, password]);
+       
+        const [newUser] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
+
+        res.status(201).json({ message: 'User registered successfully', user: newUser[0] });
+        } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Server Error' });
-    }*/
+    }
 };
 
 const loginUser = async (req, res) => {
-    /*const { email, password } = req.body;
+    const { email, password } = req.body;
     try {
-        // Find user by email
-        const user = await User.findOne({ email });
+       
+        const [users] = await db.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password]);
+        const user = users[0];
         if (!user) {
-            return res.status(404).json({ message: 'User not found' });
+            return res.status(404).json({ message: 'User not found or invalid password' });
         }
+
         // Check password
         const isPasswordMatch = await user.comparePassword(password);
         if (!isPasswordMatch) {
@@ -41,11 +39,11 @@ const loginUser = async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Server Error' });
-    }*/
+    }
 };
 
 const forgotPassword = async (req, res) => {
-    /*const { email } = req.body;
+    const { email } = req.body;
     try {
         // Find user by email
         const user = await User.findOne({ email });
@@ -59,7 +57,7 @@ const forgotPassword = async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Server Error' });
-    }*/
+    }
 };
 
 module.exports = {
