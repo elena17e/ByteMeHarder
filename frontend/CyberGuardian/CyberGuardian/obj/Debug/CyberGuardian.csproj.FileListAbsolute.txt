@@ -1,0 +1,17 @@
+C:\Users\Adrian\Downloads\Faks\STEM\frontend\CyberGuardian\CyberGuardian\bin\Debug\CyberGuardian.exe.config
+C:\Users\Adrian\Downloads\Faks\STEM\frontend\CyberGuardian\CyberGuardian\bin\Debug\CyberGuardian.exe
+C:\Users\Adrian\Downloads\Faks\STEM\frontend\CyberGuardian\CyberGuardian\bin\Debug\CyberGuardian.pdb
+C:\Users\Adrian\Downloads\Faks\STEM\frontend\CyberGuardian\CyberGuardian\obj\Debug\CyberGuardian.LoginFrm.resources
+C:\Users\Adrian\Downloads\Faks\STEM\frontend\CyberGuardian\CyberGuardian\obj\Debug\CyberGuardian.Properties.Resources.resources
+C:\Users\Adrian\Downloads\Faks\STEM\frontend\CyberGuardian\CyberGuardian\obj\Debug\CyberGuardian.csproj.GenerateResource.cache
+C:\Users\Adrian\Downloads\Faks\STEM\frontend\CyberGuardian\CyberGuardian\obj\Debug\CyberGuardian.csproj.CoreCompileInputs.cache
+C:\Users\Adrian\Downloads\Faks\STEM\frontend\CyberGuardian\CyberGuardian\obj\Debug\CyberGuardian.exe
+C:\Users\Adrian\Downloads\Faks\STEM\frontend\CyberGuardian\CyberGuardian\obj\Debug\CyberGuardian.pdb
+C:\Users\Adrian\Downloads\Faks\STEM\frontend\CyberGuardian\CyberGuardian\obj\Debug\CyberGuardian.csproj.AssemblyReference.cache
+C:\Users\Adrian\Downloads\Faks\STEM\frontend\CyberGuardian\CyberGuardian\obj\Debug\CyberGuardian.ForgotPassFrm.resources
+C:\Users\Adrian\Downloads\Faks\STEM\frontend\CyberGuardian\CyberGuardian\obj\Debug\CyberGuardian.RgstFrm.resources
+C:\Users\Adrian\Downloads\Faks\STEM\frontend\CyberGuardian\CyberGuardian\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Adrian\Downloads\Faks\STEM\frontend\CyberGuardian\CyberGuardian\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Adrian\Downloads\Faks\STEM\frontend\CyberGuardian\CyberGuardian\obj\Debug\CyberGuardian.EventsFrm.resources
+C:\Users\Adrian\Downloads\Faks\STEM\frontend\CyberGuardian\CyberGuardian\obj\Debug\CyberGuardian.AddEventsFrm.resources
+C:\Users\Adrian\Downloads\Faks\STEM\frontend\CyberGuardian\CyberGuardian\obj\Debug\CyberGuardian.csproj.CopyComplete
