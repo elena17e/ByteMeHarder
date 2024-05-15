@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const db = require('../db');
 
 const registerUser = async (req, res) => {
-  const { name, surname, email, password } = req.body;
+  const { name, surname, email, password } = req;
   try {
     const [existingUser] = await db.query(
       "SELECT * FROM users WHERE email = ?",

@@ -1,12 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
 const eventsDAO = require('./dao/eventsDAO');
 const usersDAO = require('./dao/usersDAO');
 const verifyToken = require('./auth');
-
 const app = express();
 const PORT = process.env.PORT || 3000;
+require('dotenv').config();
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -23,13 +24,13 @@ app.get('/events/:url', verifyToken, eventsDAO.searchMaliciousURL);
 
 app.post('/register', async (req, res) => {
     const result = usersDAO.registerUser(req.body);
-    const token = jwt.sign({ name: result.user.name, surname: result.user.surname, email: result.user.email }, JWT_SECRET_KEY);
+    const token = jwt.sign({ name: result.name, surname: result.surname, email: result.email }, process.env.JWT_SECRET_KEY);
     res.json({ token });
 });
 
 app.post('/login', async (req, res) => {
     const result = usersDAO.loginUser(req.body);
-    const token = jwt.sign({ name: result.user.name, surname: result.user.surname, email: result.user.email }, JWT_SECRET_KEY);
+    const token = jwt.sign({ name: result.user.name, surname: result.user.surname, email: result.user.email }, process.env.JWT_SECRET_KEY);
     res.json({ token });
 });
 
