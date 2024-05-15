@@ -2,11 +2,11 @@
 const mongoose = require('mongoose');
 const Event = require('../models/Event');
 
-mongoose.connect('mongodb://localhost:27017/your_database_name', {
+/*mongoose.connect('mongodb://localhost:27017/your_database_name', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
-});
+});*/
 
 const getAllEvents = async (req, res) => {
     try {

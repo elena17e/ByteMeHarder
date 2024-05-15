@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 const User = require('../models/User');
 
-mongoose.connect('mongodb://localhost:27017/hardkodirano', {
+/*mongoose.connect('mongodb://localhost:27017/hardkodirano', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
-});
+});*/
 
 const registerUser = async (req, res) => {
-    const { name, surname, email, password } = req.body;
+    /*const { name, surname, email, password } = req.body;
     try {
         const existingUser = await User.findOne({ email });
         if (existingUser) {
@@ -21,11 +21,11 @@ const registerUser = async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Server Error' });
-    }
+    }*/
 };
 
 const loginUser = async (req, res) => {
-    const { email, password } = req.body;
+    /*const { email, password } = req.body;
     try {
         // Find user by email
         const user = await User.findOne({ email });
@@ -41,11 +41,11 @@ const loginUser = async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Server Error' });
-    }
+    }*/
 };
 
 const forgotPassword = async (req, res) => {
-    const { email } = req.body;
+    /*const { email } = req.body;
     try {
         // Find user by email
         const user = await User.findOne({ email });
@@ -59,7 +59,7 @@ const forgotPassword = async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Server Error' });
-    }
+    }*/
 };
 
 module.exports = {
