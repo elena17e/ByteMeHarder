@@ -69,6 +69,7 @@ namespace CyberGuardian
             this.buttonGetCode.TabIndex = 22;
             this.buttonGetCode.Text = "Register";
             this.buttonGetCode.UseVisualStyleBackColor = true;
+            this.buttonGetCode.Click += new System.EventHandler(this.buttonGetCode_Click);
             // 
             // panelFrgt
             // 
@@ -142,7 +143,7 @@ namespace CyberGuardian
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(256, 23);
             this.textBox1.TabIndex = 18;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChangedAsync);
             // 
             // panel3
             // 
@@ -304,7 +305,7 @@ namespace CyberGuardian
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(297, 87);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(229, 63);
+            this.label6.Size = new System.Drawing.Size(225, 61);
             this.label6.TabIndex = 28;
             this.label6.Text = "Register";
             // 
